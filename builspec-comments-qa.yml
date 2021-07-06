@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  pre_build:
+    commands:
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean verify -Dthreads=1 -Dloop=1 -Drampup=10 -Djmeterscript=comments-qa.jmx
+
+artifacts:
+  files:
+    - '**/*'
